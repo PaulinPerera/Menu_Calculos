@@ -117,9 +117,9 @@
             // btnFechar
             // 
             this.btnFechar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFechar.Location = new System.Drawing.Point(558, 236);
+            this.btnFechar.Location = new System.Drawing.Point(558, 222);
             this.btnFechar.Name = "btnFechar";
-            this.btnFechar.Size = new System.Drawing.Size(91, 35);
+            this.btnFechar.Size = new System.Drawing.Size(91, 49);
             this.btnFechar.TabIndex = 7;
             this.btnFechar.Text = "&Fechar";
             this.btnFechar.UseVisualStyleBackColor = true;
