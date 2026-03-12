@@ -19,17 +19,44 @@ namespace Menu_Calculos.Formularios
 
         private void orienToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+             
         }
 
         private void toolStripButton4_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void toolStripStatusLabel1_Click(object sender, EventArgs e)
         {
+            
+        }
 
+        private void MDI_Menu_Kamikaze_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (MessageBox.Show("Deseja realmente sair?",
+                "Saindo...", MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question,
+                MessageBoxDefaultButton.Button2)==DialogResult.No)
+            {
+                e.Cancel = true;
+            }
+        }
+
+        private void toolStripStatusLabel3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cálculosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            staDataHora.Text=DateTime.Now.ToString()
         }
     }
 }
+
