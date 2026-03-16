@@ -55,7 +55,25 @@ namespace Menu_Calculos.Formularios
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            staDataHora.Text=DateTime.Now.ToString()
+        }
+
+        private void MDI_Menu_Kamikaze_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comBotõesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmCalculosBot frmCalculosBot = new frmCalculosBot();
+            frmCalculosBot.MdiParent = this;
+            frmCalculosBot.Show();
+        }
+
+        private void comRadioButtonsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Calculadora_com_GroupBox Calculadora_Com_GroupBox = new Calculadora_com_GroupBox();
+            Calculadora_com_GroupBox.MdiParent = this;
+            Calculadora_com_GroupBox.Show();
         }
     }
 }

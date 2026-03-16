@@ -55,20 +55,20 @@
             this.blocoDeNotasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cálculadoraWindowsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.navegadorWebToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.novoToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.abrirToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.salvarToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.imprimirToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.recortarToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.copiarToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.colarToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.ajudaToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.staUsuario = new System.Windows.Forms.ToolStripStatusLabel();
-            this.staDataHora = new System.Windows.Forms.ToolStripStatusLabel();
             this.staMensagem = new System.Windows.Forms.ToolStripStatusLabel();
+            this.staDataHora = new System.Windows.Forms.ToolStripStatusLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -108,12 +108,14 @@
             this.comBotõesToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.B)));
             this.comBotõesToolStripMenuItem.Size = new System.Drawing.Size(273, 34);
             this.comBotõesToolStripMenuItem.Text = "Com Botões";
+            this.comBotõesToolStripMenuItem.Click += new System.EventHandler(this.comBotõesToolStripMenuItem_Click);
             // 
             // comRadioButtonsToolStripMenuItem
             // 
             this.comRadioButtonsToolStripMenuItem.Name = "comRadioButtonsToolStripMenuItem";
             this.comRadioButtonsToolStripMenuItem.Size = new System.Drawing.Size(273, 34);
             this.comRadioButtonsToolStripMenuItem.Text = "Com RadioButtons";
+            this.comRadioButtonsToolStripMenuItem.Click += new System.EventHandler(this.comRadioButtonsToolStripMenuItem_Click);
             // 
             // especiaisToolStripMenuItem
             // 
@@ -230,6 +232,7 @@
             this.toolStripButton1.Size = new System.Drawing.Size(34, 28);
             this.toolStripButton1.Text = "toolStripButton1";
             this.toolStripButton1.ToolTipText = "Abrir calculadora com botões";
+            this.toolStripButton1.Click += new System.EventHandler(this.comBotõesToolStripMenuItem_Click);
             // 
             // toolStripButton2
             // 
@@ -285,6 +288,11 @@
             this.navegadorWebToolStripMenuItem.Size = new System.Drawing.Size(285, 34);
             this.navegadorWebToolStripMenuItem.Text = "Navegador Web";
             // 
+            // toolStripSeparator
+            // 
+            this.toolStripSeparator.Name = "toolStripSeparator";
+            this.toolStripSeparator.Size = new System.Drawing.Size(6, 33);
+            // 
             // novoToolStripButton
             // 
             this.novoToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -321,10 +329,10 @@
             this.imprimirToolStripButton.Size = new System.Drawing.Size(34, 28);
             this.imprimirToolStripButton.Text = "&Imprimir";
             // 
-            // toolStripSeparator
+            // toolStripSeparator2
             // 
-            this.toolStripSeparator.Name = "toolStripSeparator";
-            this.toolStripSeparator.Size = new System.Drawing.Size(6, 33);
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 33);
             // 
             // recortarToolStripButton
             // 
@@ -352,11 +360,6 @@
             this.colarToolStripButton.Name = "colarToolStripButton";
             this.colarToolStripButton.Size = new System.Drawing.Size(34, 28);
             this.colarToolStripButton.Text = "C&olar";
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 33);
             // 
             // ajudaToolStripButton
             // 
@@ -387,18 +390,18 @@
             this.staUsuario.Text = "Usuário Logado:";
             this.staUsuario.Click += new System.EventHandler(this.toolStripStatusLabel1_Click);
             // 
-            // staDataHora
-            // 
-            this.staDataHora.Name = "staDataHora";
-            this.staDataHora.Size = new System.Drawing.Size(95, 25);
-            this.staDataHora.Text = "Data/Hora";
-            // 
             // staMensagem
             // 
             this.staMensagem.Name = "staMensagem";
             this.staMensagem.Size = new System.Drawing.Size(100, 25);
             this.staMensagem.Text = "Mensagem";
             this.staMensagem.Click += new System.EventHandler(this.toolStripStatusLabel3_Click);
+            // 
+            // staDataHora
+            // 
+            this.staDataHora.Name = "staDataHora";
+            this.staDataHora.Size = new System.Drawing.Size(95, 25);
+            this.staDataHora.Text = "Data/Hora";
             // 
             // timer1
             // 
@@ -418,6 +421,7 @@
             this.Name = "MDI_Menu_Kamikaze";
             this.Text = " ";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MDI_Menu_Kamikaze_FormClosing);
+            this.Load += new System.EventHandler(this.MDI_Menu_Kamikaze_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);

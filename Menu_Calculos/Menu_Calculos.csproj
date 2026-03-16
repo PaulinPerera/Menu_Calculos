@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Calculadora com GroupBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Calculadora com GroupBox.Designer.cs">
+      <DependentUpon>Calculadora com GroupBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\MDI_Menu_Kamikaze.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -60,6 +66,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Calculadora com GroupBox.resx">
+      <DependentUpon>Calculadora com GroupBox.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\MDI_Menu_Kamikaze.resx">
       <DependentUpon>MDI_Menu_Kamikaze.cs</DependentUpon>
     </EmbeddedResource>

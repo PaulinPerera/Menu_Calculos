@@ -12,7 +12,6 @@ namespace Menu_Calculos
         /// <summary>
         /// Ponto de entrada principal para o aplicativo.
         /// </summary>
-        /// //oilaisidha
         [STAThread]
         static void Main()
         {
