@@ -40,6 +40,8 @@
             this.txtN2 = new System.Windows.Forms.TextBox();
             this.lblResultado = new System.Windows.Forms.Label();
             this.btnLimparTexto = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.gbButton.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -79,6 +81,7 @@
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "Somar";
             this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButton1.CheckedChanged += new System.EventHandler(this.btnSomar_Click);
             // 
             // radioButton4
             // 
@@ -173,11 +176,31 @@
             this.btnLimparTexto.Text = "&Limpar";
             this.btnLimparTexto.UseVisualStyleBackColor = true;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(325, 357);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(124, 35);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "Fechar";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(157, 357);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(124, 35);
+            this.button2.TabIndex = 9;
+            this.button2.Text = "Calcular";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
             // Calculadora_com_GroupBox
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnLimparTexto);
             this.Controls.Add(this.lblResultado);
             this.Controls.Add(this.txtN2);
@@ -186,6 +209,7 @@
             this.Controls.Add(this.gbButton);
             this.Name = "Calculadora_com_GroupBox";
             this.Text = "Cálculos com RadioButtons";
+            this.Load += new System.EventHandler(this.Calculadora_com_GroupBox_Load);
             this.gbButton.ResumeLayout(false);
             this.gbButton.PerformLayout();
             this.ResumeLayout(false);
@@ -207,5 +231,7 @@
         private System.Windows.Forms.TextBox txtN2;
         private System.Windows.Forms.Label lblResultado;
         private System.Windows.Forms.Button btnLimparTexto;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }

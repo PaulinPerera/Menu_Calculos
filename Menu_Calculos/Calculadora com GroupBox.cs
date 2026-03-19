@@ -26,5 +26,15 @@ namespace Menu_Calculos
         {
 
         }
+
+        private void Calculadora_com_GroupBox_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSomar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +17,7 @@ namespace Menu_Calculos.Formularios
         {
             InitializeComponent();
         }
+
 
         private void orienToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -72,8 +74,45 @@ namespace Menu_Calculos.Formularios
         private void comRadioButtonsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Calculadora_com_GroupBox Calculadora_Com_GroupBox = new Calculadora_com_GroupBox();
-            Calculadora_com_GroupBox.MdiParent = this;
-            Calculadora_com_GroupBox.Show();
+            Calculadora_Com_GroupBox.MdiParent = this;
+            Calculadora_Com_GroupBox.Show();
+        }
+
+        private void cascataToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.LayoutMdi(MdiLayout.Cascade);
+        }
+
+        private void horizontalmenteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.LayoutMdi(System.Windows.Forms.MdiLayout.TileHorizontal);
+        }
+
+        private void verticalmenteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.LayoutMdi(MdiLayout.TileVertical);
+        }
+
+        private void blocoDeNotasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start("notepad.exe");
+        }
+
+        private void cálculadoraWindowsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start("calc.exe");
+        }
+
+        private void navegadorWebToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start("msedge.exe");
+        }
+
+        private void visorÚnicoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            super_calculadora super_calculadora = new super_calculadora();
+            super_calculadora.MdiParent = this;
+            super_calculadora.Show();
         }
     }
 }

@@ -66,6 +66,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="super_calculadora.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="super_calculadora.Designer.cs">
+      <DependentUpon>super_calculadora.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Calculadora com GroupBox.resx">
       <DependentUpon>Calculadora com GroupBox.cs</DependentUpon>
     </EmbeddedResource>
@@ -84,6 +90,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="super_calculadora.resx">
+      <DependentUpon>super_calculadora.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
