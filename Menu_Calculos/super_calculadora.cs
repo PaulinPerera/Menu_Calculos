@@ -17,6 +17,11 @@ namespace Menu_Calculos
             InitializeComponent();
         }
 
+        private void f_digitos(object sender, EventArgs e)
+        {
+            string digito = ((Button)sender).Text;
+
+        }
         private void button1_Click(object sender, EventArgs e)
         {
 
@@ -38,6 +43,16 @@ namespace Menu_Calculos
         }
 
         private void button6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void super_calculadora_Load(object sender, EventArgs e)
         {
 
         }
