@@ -25,11 +25,12 @@ namespace Menu_Calculos
         private void f_digitos(object sender, EventArgs e)
         {
             string digito = ((Button)sender).Text;
-            if(lblVisor.Text == "0" || vLimparVisor)
+            if (lblVisor.Text == "0" || vLimparVisor)
             {
                 lblVisor.Text = "";
                 vLimparVisor = false;
             }
+
                
             lblVisor.Text += digito;
         }
@@ -39,25 +40,9 @@ namespace Menu_Calculos
             vNumAnt = decimal.Parse(lblVisor.Text);
             vOperacao = ((Button)sender).Text;
             vLimparVisor = true;
-        }
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button6_Click(object sender, EventArgs e)
-        {
-
+            lblHistorico.Text = "";
+            lblHistorico.Text = vNumAnt + " " + vOperacao + " ";
+            lblVisor.Focus();
         }
 
         private void super_calculadora_Load(object sender, EventArgs e)
@@ -85,28 +70,15 @@ namespace Menu_Calculos
                     break;
                
             }
+            lblHistorico.Text += vNumAnt + " = ";
+            lblVisor.Focus();
         }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button3_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button16_Click(object sender, EventArgs e)
-        {
-
-        }
-
 
         private void btnVirgula_Click(object sender, EventArgs e)
         {
             if (!lblVisor.Text.Contains(","))
-                lblVisor.Text += ",";
+            {  lblVisor.Text += ","; }
+            lblVisor.Focus();
         }
 
         private void btnLimpar_Click(object sender, EventArgs e)
@@ -119,6 +91,31 @@ namespace Menu_Calculos
         {
             lblVisor.Text=lblVisor.Text.Substring(0, lblVisor.Text.Length - 1);
             if(lblVisor.Text=="") lblVisor.Text = "0";
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void frmCalculadoraVisorUnico_KeyDown(object sender, KeyEventArgs e)
+        {
+            label1.Text = e.KeyCode.ToString();
+            Button botao = new Button();
+            if (e.KeyCode == Keys.Escape)
+            {
+                Close();
+            }
+            if (e.KeyCode >= Keys.NumPad0 && e.KeyCode <= Keys.NumPad9)
+            {
+                botao.Text = e.KeyCode.ToString().Substring(6);
+                f_digitos(botao, e);
+            }
+        }
+
+        private void label1_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 }
