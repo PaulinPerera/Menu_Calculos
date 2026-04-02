@@ -31,8 +31,7 @@ namespace Menu_Calculos
                 vLimparVisor = false;
             }
 
-               
-            lblVisor.Text += digito;
+           lblVisor.Text += digito;
         }
 
         private void f_operadores(object sender, EventArgs e)
@@ -43,6 +42,7 @@ namespace Menu_Calculos
             lblHistorico.Text = "";
             lblHistorico.Text = vNumAnt + " " + vOperacao + " ";
             lblVisor.Focus();
+            
         }
 
         private void super_calculadora_Load(object sender, EventArgs e)
@@ -100,22 +100,59 @@ namespace Menu_Calculos
 
         private void frmCalculadoraVisorUnico_KeyDown(object sender, KeyEventArgs e)
         {
-            label1.Text = e.KeyCode.ToString();
+            lblNumAtual.Text = e.KeyCode.ToString();
             Button botao = new Button();
             if (e.KeyCode == Keys.Escape)
             {
                 Close();
             }
-            if (e.KeyCode >= Keys.NumPad0 && e.KeyCode <= Keys.NumPad9)
+
+            if (e.KeyCode >= Keys.NumPad0 && e.KeyCode<= Keys.NumPad9)
             {
-                botao.Text = e.KeyCode.ToString().Substring(6);
-                f_digitos(botao, e);
+                 botao.Text = e.KeyCode.ToString().Substring(6);
+                foreach(Control bot in panel1.Controls)
+                {
+                    if (((Button)bot).Text == botao.Text)
+                    {
+                        bot.BackColor = Color.Gray;
+                    }
+                }
+              f_digitos(botao, e);
+            }
+
+            switch (e.KeyCode)
+            {
+                case Keys.Add:
+                    botao.Text = "+";
+                    f_operadores(botao, e);
+                    break;
+                case Keys.Subtract:
+                    botao.Text = "-";
+                    f_operadores(botao, e);
+                    break;
+                case Keys.Return:
+                    button19_Click(botao, e);
+                    break;
             }
         }
 
         private void label1_Click_1(object sender, EventArgs e)
         {
+          
+        }
 
+        private void lblVisor_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void super_calculadora_KeyUp(object sender, KeyEventArgs e)
+        {
+            foreach (Control botao in panel1.Controls)
+                {
+                    botao.BackColor = Color.White;
+                }
+            
         }
     }
 }

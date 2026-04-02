@@ -53,7 +53,7 @@
             this.button24 = new System.Windows.Forms.Button();
             this.btnIgual = new System.Windows.Forms.Button();
             this.lblHistorico = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblNumAtual = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -79,6 +79,7 @@
             this.lblVisor.Text = "0";
             this.lblVisor.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.lblVisor.Click += new System.EventHandler(this.f_digitos);
+            this.lblVisor.TextChanged += new System.EventHandler(this.lblVisor_TextChanged);
             // 
             // panel2
             // 
@@ -98,7 +99,7 @@
             this.panel2.Controls.Add(this.btn9);
             this.panel2.Controls.Add(this.button2);
             this.panel2.Controls.Add(this.button1);
-            this.panel2.Location = new System.Drawing.Point(12, 91);
+            this.panel2.Location = new System.Drawing.Point(12, 102);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(291, 317);
             this.panel2.TabIndex = 14;
@@ -262,7 +263,7 @@
             this.panel1.Controls.Add(this.button18);
             this.panel1.Controls.Add(this.button21);
             this.panel1.Controls.Add(this.button24);
-            this.panel1.Location = new System.Drawing.Point(309, 91);
+            this.panel1.Location = new System.Drawing.Point(309, 102);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(110, 317);
             this.panel1.TabIndex = 24;
@@ -326,7 +327,7 @@
             // 
             this.btnIgual.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnIgual.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnIgual.Location = new System.Drawing.Point(12, 414);
+            this.btnIgual.Location = new System.Drawing.Point(12, 425);
             this.btnIgual.Name = "btnIgual";
             this.btnIgual.Size = new System.Drawing.Size(407, 51);
             this.btnIgual.TabIndex = 25;
@@ -344,16 +345,16 @@
             this.lblHistorico.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.lblHistorico.Click += new System.EventHandler(this.label1_Click);
             // 
-            // label1
+            // lblNumAtual
             // 
-            this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label1.Location = new System.Drawing.Point(12, 68);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(51, 20);
-            this.label1.TabIndex = 27;
-            this.label1.Text = "label1";
-            this.label1.Click += new System.EventHandler(this.label1_Click_1);
+            this.lblNumAtual.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNumAtual.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lblNumAtual.Location = new System.Drawing.Point(12, 68);
+            this.lblNumAtual.Name = "lblNumAtual";
+            this.lblNumAtual.Size = new System.Drawing.Size(132, 31);
+            this.lblNumAtual.TabIndex = 27;
+            this.lblNumAtual.Text = "0";
+            this.lblNumAtual.Click += new System.EventHandler(this.label1_Click_1);
             // 
             // super_calculadora
             // 
@@ -361,7 +362,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkRed;
             this.ClientSize = new System.Drawing.Size(430, 556);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblNumAtual);
             this.Controls.Add(this.lblHistorico);
             this.Controls.Add(this.btnIgual);
             this.Controls.Add(this.panel1);
@@ -371,6 +372,8 @@
             this.Name = "super_calculadora";
             this.Text = "super_calculadora";
             this.Load += new System.EventHandler(this.super_calculadora_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmCalculadoraVisorUnico_KeyDown);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.super_calculadora_KeyUp);
             this.panel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -405,6 +408,6 @@
         private System.Windows.Forms.Button button24;
         private System.Windows.Forms.Button btnIgual;
         private System.Windows.Forms.Label lblHistorico;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblNumAtual;
     }
 }
