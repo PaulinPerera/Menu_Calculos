@@ -52,25 +52,25 @@ namespace Menu_Calculos
 
         private void button19_Click(object sender, EventArgs e)
         {
-            
             decimal vNumAtual = decimal.Parse(lblVisor.Text);
+            decimal resultado = 0;
+
             switch (vOperacao)
             {
-                case "+":
-                    lblVisor.Text = (vNumAnt + vNumAtual).ToString();
-                    break;  
-                case "-":
-                    lblVisor.Text = (vNumAnt - vNumAtual).ToString();
-                    break;
-                case "x":
-                    lblVisor.Text = (vNumAnt * vNumAtual).ToString();
-                    break;
+                case "+": resultado = vNumAnt + vNumAtual; break;
+                case "-": resultado = vNumAnt - vNumAtual; break;
+                case "x": resultado = vNumAnt * vNumAtual; break;
                 case ":":
-                    lblVisor.Text = (vNumAnt / vNumAtual).ToString();
+                    if (vNumAtual == 0) { lblVisor.Text = "Erro: div/0"; return; }
+                    resultado = vNumAnt / vNumAtual;
                     break;
-               
             }
-            lblHistorico.Text += vNumAnt + " = ";
+            
+            lblHistorico.Text = vNumAnt + " " + vOperacao + " " + vNumAtual + " = " + resultado;
+
+            lblVisor.Text = resultado.ToString();
+            vNumAnt = resultado;  // permite encadear operações
+            vLimparVisor = true;
             lblVisor.Focus();
         }
 
@@ -102,22 +102,26 @@ namespace Menu_Calculos
         {
             lblNumAtual.Text = e.KeyCode.ToString();
             Button botao = new Button();
+
             if (e.KeyCode == Keys.Escape)
             {
                 Close();
+                return;
             }
 
-            if (e.KeyCode >= Keys.NumPad0 && e.KeyCode<= Keys.NumPad9)
+            if (e.KeyCode >= Keys.NumPad0 && e.KeyCode <= Keys.NumPad9)
             {
-                 botao.Text = e.KeyCode.ToString().Substring(6);
-                foreach(Control bot in panel1.Controls)
+                botao.Text = e.KeyCode.ToString().Substring(6);
+                foreach (Control bot in panel1.Controls)
                 {
                     if (((Button)bot).Text == botao.Text)
-                    {
                         bot.BackColor = Color.Gray;
-                    }
                 }
-              f_digitos(botao, e);
+                f_digitos(botao, e);
+
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+                return;
             }
 
             switch (e.KeyCode)
@@ -125,13 +129,19 @@ namespace Menu_Calculos
                 case Keys.Add:
                     botao.Text = "+";
                     f_operadores(botao, e);
+                    e.Handled = true;
+                    e.SuppressKeyPress = true;
                     break;
                 case Keys.Subtract:
                     botao.Text = "-";
                     f_operadores(botao, e);
+                    e.Handled = true;
+                    e.SuppressKeyPress = true;
                     break;
                 case Keys.Return:
                     button19_Click(botao, e);
+                    e.Handled = true;
+                    e.SuppressKeyPress = true;
                     break;
             }
         }
@@ -144,15 +154,6 @@ namespace Menu_Calculos
         private void lblVisor_TextChanged(object sender, EventArgs e)
         {
 
-        }
-
-        private void super_calculadora_KeyUp(object sender, KeyEventArgs e)
-        {
-            foreach (Control botao in panel1.Controls)
-                {
-                    botao.BackColor = Color.White;
-                }
-            
         }
     }
 }
