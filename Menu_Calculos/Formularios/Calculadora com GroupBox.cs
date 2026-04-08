@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Menu_Calculos
 {
@@ -32,9 +33,35 @@ namespace Menu_Calculos
 
         }
 
-        private void btnSomar_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void btnLimparTexto_Click(object sender, EventArgs e)
+        {
+            txtN1.Text = "";
+            txtN2.Text = "";
+            lblResultado.Text = "";
+        }
+
+        private void txtN1_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void txtN2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void RadBSomar_CheckedChanged(object sender, EventArgs e)
+        {
         }
     }
 }
