@@ -12,16 +12,13 @@ namespace Menu_Calculos
 {
     public partial class super_calculadora : Form
     {
-
         decimal vNumAnt;
         string vOperacao;
         bool vLimparVisor;
-
         public super_calculadora()
         {
             InitializeComponent();
         }
-
         private void f_digitos(object sender, EventArgs e)
         {
             string digito = ((Button)sender).Text;
@@ -31,9 +28,8 @@ namespace Menu_Calculos
                 vLimparVisor = false;
             }
 
-           lblVisor.Text += digito;
+            lblVisor.Text += digito;
         }
-
         private void f_operadores(object sender, EventArgs e)
         {
             vNumAnt = decimal.Parse(lblVisor.Text);
@@ -42,62 +38,71 @@ namespace Menu_Calculos
             lblHistorico.Text = "";
             lblHistorico.Text = vNumAnt + " " + vOperacao + " ";
             lblVisor.Focus();
-            
         }
-
-        private void super_calculadora_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void button19_Click(object sender, EventArgs e)
         {
-            decimal vNumAtual = decimal.Parse(lblVisor.Text);
-            decimal resultado = 0;
+            if (string.IsNullOrEmpty(vOperacao)) return;
 
+            decimal vNumAtual = decimal.Parse(lblVisor.Text);
             switch (vOperacao)
             {
-                case "+": resultado = vNumAnt + vNumAtual; break;
-                case "-": resultado = vNumAnt - vNumAtual; break;
-                case "x": resultado = vNumAnt * vNumAtual; break;
+                case "+":
+                    lblVisor.Text = (vNumAnt + vNumAtual).ToString();
+                    break;
+                case "-":
+                    lblVisor.Text = (vNumAnt - vNumAtual).ToString();
+                    break;
+                case "x":
+                    lblVisor.Text = (vNumAnt * vNumAtual).ToString();
+                    break;
                 case ":":
-                    if (vNumAtual == 0) { lblVisor.Text = "Erro: div/0"; return; }
-                    resultado = vNumAnt / vNumAtual;
+                    if (vNumAtual == 0)
+                    {
+                        MessageBox.Show("Divisão por zero não é permitida.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        lblVisor.Text = "0";
+                    }
+                    else
+                    {
+                        lblVisor.Text = (vNumAnt / vNumAtual).ToString();
+                    }
+                    break;
+                case "^":
+                    lblVisor.Text = ((decimal)Math.Pow((double)vNumAnt, (double)vNumAtual)).ToString();
                     break;
             }
-            
-            lblHistorico.Text = vNumAnt + " " + vOperacao + " " + vNumAtual + " = " + resultado;
 
-            lblVisor.Text = resultado.ToString();
-            vNumAnt = resultado;  // permite encadear operações
+            lblHistorico.Text = vNumAnt + " " + vOperacao + " " + vNumAtual;
+
+            vOperacao = null;
             vLimparVisor = true;
             lblVisor.Focus();
         }
-
         private void btnVirgula_Click(object sender, EventArgs e)
         {
             if (!lblVisor.Text.Contains(","))
-            {  lblVisor.Text += ","; }
+            { lblVisor.Text += ","; }
             lblVisor.Focus();
         }
-
         private void btnLimpar_Click(object sender, EventArgs e)
         {
-            vNumAnt  = 0;
+            vNumAnt = 0;
+            vOperacao = null;
+            lblHistorico.Text = "";
             lblVisor.Text = "0";
         }
-
+        private void btnCE_Click(object sender, EventArgs e)
+        {
+            lblVisor.Text = "0";
+            vLimparVisor = false;
+        }
         private void btnBack_Click(object sender, EventArgs e)
         {
-            lblVisor.Text=lblVisor.Text.Substring(0, lblVisor.Text.Length - 1);
-            if(lblVisor.Text=="") lblVisor.Text = "0";
+            if (lblVisor.Text.Length > 0)
+            {
+                lblVisor.Text = lblVisor.Text.Substring(0, lblVisor.Text.Length - 1);
+            }
+            if (lblVisor.Text == "" || lblVisor.Text == "-") lblVisor.Text = "0";
         }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void frmCalculadoraVisorUnico_KeyDown(object sender, KeyEventArgs e)
         {
             lblNumAtual.Text = e.KeyCode.ToString();
@@ -118,7 +123,15 @@ namespace Menu_Calculos
                         bot.BackColor = Color.Gray;
                 }
                 f_digitos(botao, e);
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+                return;
+            }
 
+            if (e.KeyCode >= Keys.D0 && e.KeyCode <= Keys.D9 && !e.Shift)
+            {
+                botao.Text = ((int)(e.KeyCode - Keys.D0)).ToString();
+                f_digitos(botao, e);
                 e.Handled = true;
                 e.SuppressKeyPress = true;
                 return;
@@ -138,22 +151,51 @@ namespace Menu_Calculos
                     e.Handled = true;
                     e.SuppressKeyPress = true;
                     break;
+                case Keys.Multiply:
+                    botao.Text = "x";
+                    f_operadores(botao, e);
+                    e.Handled = true;
+                    e.SuppressKeyPress = true;
+                    break;
+                case Keys.Divide:
+                    botao.Text = ":";
+                    f_operadores(botao, e);
+                    e.Handled = true;
+                    e.SuppressKeyPress = true;
+                    break;
                 case Keys.Return:
                     button19_Click(botao, e);
                     e.Handled = true;
                     e.SuppressKeyPress = true;
                     break;
+                case Keys.Back:
+                    btnBack_Click(botao, e);
+                    e.Handled = true;
+                    e.SuppressKeyPress = true;
+                    break;
             }
         }
-
-        private void label1_Click_1(object sender, EventArgs e)
+        private void super_calculadora_KeyUp(object sender, KeyEventArgs e)
         {
-          
+            foreach (Control control in panel1.Controls)
+            {
+                control.BackColor = Color.White;
+            }
+            foreach (Control control in panel2.Controls)
+            {
+                control.BackColor = Color.White;
+                if (control.Text == "=")
+                {
+                    control.BackColor = Color.LightSeaGreen;
+                }
+            }
         }
-
-        private void lblVisor_TextChanged(object sender, EventArgs e)
+        private void bntSinal_Click(object sender, EventArgs e)
         {
-
+            if (double.TryParse(lblVisor.Text, out double valor))
+            {
+                lblVisor.Text = (valor * -1).ToString();
+            }
         }
     }
 }
