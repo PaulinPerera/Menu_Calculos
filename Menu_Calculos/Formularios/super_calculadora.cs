@@ -197,5 +197,10 @@ namespace Menu_Calculos
                 lblVisor.Text = (valor * -1).ToString();
             }
         }
+
+        private void super_calculadora_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

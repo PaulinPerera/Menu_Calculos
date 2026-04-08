@@ -60,6 +60,7 @@
             // 
             // lblSinal
             // 
+            this.lblSinal.BackColor = System.Drawing.Color.White;
             this.lblSinal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblSinal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSinal.Location = new System.Drawing.Point(118, 105);
@@ -72,7 +73,9 @@
             // 
             // lblResul2
             // 
+            this.lblResul2.BackColor = System.Drawing.Color.DarkRed;
             this.lblResul2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblResul2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.lblResul2.Location = new System.Drawing.Point(262, 209);
             this.lblResul2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblResul2.Name = "lblResul2";
@@ -84,6 +87,7 @@
             // 
             // lblResultado
             // 
+            this.lblResultado.BackColor = System.Drawing.Color.White;
             this.lblResultado.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblResultado.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblResultado.Location = new System.Drawing.Point(262, 251);
@@ -207,6 +211,7 @@
             // 
             // calculatorPanel
             // 
+            this.calculatorPanel.BackColor = System.Drawing.Color.DarkRed;
             this.calculatorPanel.Controls.Add(this.txtN1);
             this.calculatorPanel.Controls.Add(this.lblSinal);
             this.calculatorPanel.Controls.Add(this.btnFechar);
